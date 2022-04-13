@@ -27,4 +27,4 @@ Een “Explore” knop erbij, waarmee je bijvoorbeeld een health potion kunt vin
 Hou de hitpoints bij in een Progress Bar.
 Wapens, armor etc.
 
-![imagelattext](imagelink)
+![Image of the coding exercise BattleSim](https://github.com/CrossyChainsaw/BattleSim/blob/master/BattleSim.png?raw=true)
