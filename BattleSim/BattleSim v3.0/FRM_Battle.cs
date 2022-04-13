@@ -100,15 +100,15 @@ namespace BattleSim_v3._0
         {
             if (RB_P1_Attack1.Checked)
             {
-                return Player1.NeoFighter.Attack1(rnd, Player1.NeoFighter.AttackPower);
+                return Player1.NeoFighter.Attack1(rnd, Player1.NeoFighter.AttackPower, Player2.NeoFighter);
             }
             else if (RB_P1_Attack2.Checked)
             {
-                return Player1.NeoFighter.Attack2(rnd, Player1.NeoFighter.AttackPower);
+                return Player1.NeoFighter.Attack2(rnd, Player1.NeoFighter.AttackPower, Player2.NeoFighter);
             }
             else if (RB_P1_Attack3.Checked)
             {
-                return Player1.NeoFighter.Attack3(rnd, Player1.NeoFighter.AttackPower);
+                return Player1.NeoFighter.Attack3(rnd, Player1.NeoFighter.AttackPower, Player2.NeoFighter);
             }
             else
             {
@@ -120,15 +120,15 @@ namespace BattleSim_v3._0
         {
             if (RB_P2_Attack1.Checked)
             {
-                return Player2.NeoFighter.Attack1(rnd, Player2.NeoFighter.AttackPower);
+                return Player2.NeoFighter.Attack1(rnd, Player2.NeoFighter.AttackPower, Player2.NeoFighter);
             }
             else if (RB_P2_Attack2.Checked)
             {
-                return Player2.NeoFighter.Attack2(rnd, Player2.NeoFighter.AttackPower);
+                return Player2.NeoFighter.Attack2(rnd, Player2.NeoFighter.AttackPower, Player2.NeoFighter);
             }
             else if (RB_P2_Attack3.Checked)
             {
-                return Player2.NeoFighter.Attack3(rnd, Player2.NeoFighter.AttackPower);
+                return Player2.NeoFighter.Attack3(rnd, Player2.NeoFighter.AttackPower, Player2.NeoFighter);
             }
             else
             {

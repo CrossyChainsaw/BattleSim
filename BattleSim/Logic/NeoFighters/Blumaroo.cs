@@ -16,15 +16,15 @@ namespace Logic.NeoFighters
             CritRatio = 10;
         }
 
-        public override int Attack1(Random rnd, int attackPower)
+        public override int Attack1(Random rnd, int attackPower, NeoFighter enemyNeoFighter)
         {
             throw new NotImplementedException();
         }
-        public override int Attack2(Random rnd, int attackPower)
+        public override int Attack2(Random rnd, int attackPower, NeoFighter enemyNeoFighter)
         {
             throw new NotImplementedException();
         }
-        public override int Attack3(Random rnd, int attackPower)
+        public override int Attack3(Random rnd, int attackPower, NeoFighter enemyNeoFighter)
         {
             throw new NotImplementedException();
         }

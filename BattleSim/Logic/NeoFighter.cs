@@ -22,18 +22,23 @@ namespace Logic
         public int AttackPower { get; internal set; }
         /// <summary>Chance in percentage. Example 30 means 30%</summary>
         public int CritRatio { get; internal set; }
+        public bool IsPoisoned { get; internal set; }
         public string Attack1Name { get; internal set; }
         public string Attack2Name { get; internal set; }
         public string Attack3Name { get; internal set; }
 
 
+        public void SetPoisoned(bool value)
+        {
+            IsPoisoned = value;
+        }
         public void LoseHealth(int damage)
         {
-            Health = Health - damage;
+            Health -= damage;
         }
         public void GainHealth(int health)
         {
-            Health = health + health;
+            Health += health;
         }
         public int Attack(Random rnd, int attackpower)
         {
@@ -41,9 +46,9 @@ namespace Logic
             return attackpower + attackModifier;
         }
 
-        abstract public int Attack1(Random rnd, int attackPower);
-        abstract public int Attack2(Random rnd, int attackPower);
-        abstract public int Attack3(Random rnd, int attackPower);
+        abstract public int Attack1(Random rnd, int attackPower, NeoFighter enemyNeoFighter);
+        abstract public int Attack2(Random rnd, int attackPower, NeoFighter enemyNeoFighter);
+        abstract public int Attack3(Random rnd, int attackPower, NeoFighter enemyNeoFighter);
     }
 }
 

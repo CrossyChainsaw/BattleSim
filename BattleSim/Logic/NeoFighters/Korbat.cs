@@ -13,6 +13,8 @@ namespace Logic.NeoFighters
         int _attackPower = 28; // this means between 26-30
         int _critRatio = 15;
 
+        int _chanceToPoison = 45;
+
         public Korbat()
         {
             Name = _name;
@@ -24,23 +26,35 @@ namespace Logic.NeoFighters
             Attack3Name = "PoisonBite";
         }
 
-        public override int Attack1(Random rnd, int attackPower)
+        public override int Attack1(Random rnd, int attackPower, NeoFighter enemyNeoFighter)
         {
-            return Attack(rnd, _attackPower);
             //LifeSteal
             //heal 40% of dealth damage
+            int damage = Attack(rnd, _attackPower);
+            GainHealth(damage * 40 / 100);
+            return damage;
         }
-        public override int Attack2(Random rnd, int attackPower)
+        public override int Attack2(Random rnd, int attackPower, NeoFighter enemyNeoFighter)
         {
-            return Attack(rnd, _attackPower * 3);
             //Strychine
             //double damage if enemy is poisoned
+            int damage = Attack(rnd, _attackPower);
+            if (enemyNeoFighter.IsPoisoned)
+            {
+                damage *= 2;
+            }
+            return damage;
         }
-        public override int Attack3(Random rnd, int attackPower)
+        public override int Attack3(Random rnd, int attackPower, NeoFighter enemyNeoFighter)
         {
-            return Attack(rnd, _attackPower * 6);
             //PoisonBite
             //30% chance to poison
+            int poisonChance = rnd.Next(1, 101);
+            if (poisonChance <= _chanceToPoison)
+            {
+                enemyNeoFighter.SetPoisoned(true);
+            }
+            return Attack(rnd, _attackPower);
         }
     }
 }
