@@ -40,15 +40,19 @@ namespace Logic
         {
             Health += health;
         }
+        public void GainAttackPower(int attackPower)
+        {
+            AttackPower += attackPower;
+        }
         public int Attack(Random rnd, int attackpower)
         {
             int attackModifier = rnd.Next(-2, 3);
             return attackpower + attackModifier;
         }
 
-        abstract public int Attack1(Random rnd, int attackPower, NeoFighter enemyNeoFighter);
-        abstract public int Attack2(Random rnd, int attackPower, NeoFighter enemyNeoFighter);
-        abstract public int Attack3(Random rnd, int attackPower, NeoFighter enemyNeoFighter);
+        abstract public int Attack1(Random rnd, NeoFighter enemyNeoFighter);
+        abstract public int Attack2(Random rnd, NeoFighter enemyNeoFighter);
+        abstract public int Attack3(Random rnd, NeoFighter enemyNeoFighter);
     }
 }
 

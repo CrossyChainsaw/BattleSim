@@ -49,15 +49,6 @@ namespace BattleSim_v3._0
             PB_Player_NeoFighter.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
             PB_Player_NeoFighter.Invalidate();
         }
-
-        // Logic
-        // Methods
-        public FRM_Battle(Player player1, Player player2)
-        {
-            InitializeComponent();
-            Player1 = player1;
-            Player2 = player2;
-        }
         void SwitchTurn()
         {
             BTN_Player1_Attack.Enabled = !BTN_Player1_Attack.Enabled;
@@ -80,12 +71,40 @@ namespace BattleSim_v3._0
             RB_P2_Attack2.Text = Player2.NeoFighter.Attack2Name;
             RB_P2_Attack3.Text = Player2.NeoFighter.Attack3Name;
         }
+
+        // Logic
+        // Methods
+        public FRM_Battle(Player player1, Player player2)
+        {
+            InitializeComponent();
+            Player1 = player1;
+            Player2 = player2;
+        }
+        void CheckIfSomeoneDied()
+        {
+            if (Player1.NeoFighter.Health <= 0 || Player2.NeoFighter.Health <= 0)
+            {
+                MessageBox.Show("Someone is dead");
+            }
+        }
+        void StatusEffectsPlayer2()
+        {
+            if (Player2.NeoFighter.IsPoisoned)
+            {
+                Player2.NeoFighter.LoseHealth(5);
+                PB_Player2_NeoFighter.BackColor = Color.Purple;
+            }
+        }
+
         // Events
         private void BTN_Player1_Attack_Click(object sender, EventArgs e)
         {
             int damage = CalculateDamagePlayer1();
             Player2.NeoFighter.LoseHealth(damage);
+            StatusEffectsPlayer2();
+
             UpdateHealth();
+            CheckIfSomeoneDied();
             SwitchTurn();
         }
         private void BTN_Player2_Attack_Click(object sender, EventArgs e)
@@ -100,15 +119,15 @@ namespace BattleSim_v3._0
         {
             if (RB_P1_Attack1.Checked)
             {
-                return Player1.NeoFighter.Attack1(rnd, Player1.NeoFighter.AttackPower, Player2.NeoFighter);
+                return Player1.NeoFighter.Attack1(rnd, Player2.NeoFighter);
             }
             else if (RB_P1_Attack2.Checked)
             {
-                return Player1.NeoFighter.Attack2(rnd, Player1.NeoFighter.AttackPower, Player2.NeoFighter);
+                return Player1.NeoFighter.Attack2(rnd, Player2.NeoFighter);
             }
             else if (RB_P1_Attack3.Checked)
             {
-                return Player1.NeoFighter.Attack3(rnd, Player1.NeoFighter.AttackPower, Player2.NeoFighter);
+                return Player1.NeoFighter.Attack3(rnd, Player2.NeoFighter);
             }
             else
             {
@@ -120,15 +139,15 @@ namespace BattleSim_v3._0
         {
             if (RB_P2_Attack1.Checked)
             {
-                return Player2.NeoFighter.Attack1(rnd, Player2.NeoFighter.AttackPower, Player1.NeoFighter);
+                return Player2.NeoFighter.Attack1(rnd, Player1.NeoFighter);
             }
             else if (RB_P2_Attack2.Checked)
             {
-                return Player2.NeoFighter.Attack2(rnd, Player2.NeoFighter.AttackPower, Player1.NeoFighter);
+                return Player2.NeoFighter.Attack2(rnd, Player1.NeoFighter);
             }
             else if (RB_P2_Attack3.Checked)
             {
-                return Player2.NeoFighter.Attack3(rnd, Player2.NeoFighter.AttackPower, Player1.NeoFighter);
+                return Player2.NeoFighter.Attack3(rnd, Player1.NeoFighter);
             }
             else
             {
