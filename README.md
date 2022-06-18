@@ -1,12 +1,12 @@
 # Exercise Explained (dutch)
 
-Inleiding
+# Inleiding
 In het spel BattleSim kun je met twee spelers tegen elkaar vechten. In deze versie is de linkerspeler een Knight en de rechterspeler een Ranger. Beide spelers hebben elk 100 hitpoints. Het is een turn-based spel, dus om beurten vallen de spelers elkaar aan. De sterkte van de aanval ligt tussen de 0 (een misser) en de 30. Als de speler een klap van meer dan 25 geeft, dan heb je een “Critical hit”. Op het moment dat het aantal hitpoints 0 of minder is, dan heeft die speler helaas verloren.
 
-Opdracht
+# Opdracht
 Programmeer de BattleSim. Figuur is een voorbeeld van hoe het scherm eruit kan zien.
 
-Opdracht BattleSim
+# Opdracht BattleSim
 
 Maak een klasse Speler, deze heeft een naam en een aantal hitpoints.
 Maak de properties en de constructor voor deze klasse.
